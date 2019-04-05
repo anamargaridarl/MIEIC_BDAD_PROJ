@@ -46,9 +46,9 @@ idHospital REFERENCES Funcionario PRIMARY KEY
 DROP TABLE if exists Data;
 
 CREATE TABLE Data (
-idHospital REFERENCES Funcionario,
+idHospital REFERENCES Funcionario ON DELETE CASCADE ON UPDATE CASCADE,
 data TEXT,
-idAgenda REFERENCES Agenda,
+idAgenda REFERENCES Agenda ON DELETE SET NULL ON UPDATE CASCADE,
 PRIMARY KEY(idHospital,data)
 );
 
@@ -58,7 +58,8 @@ DROP TABLE if exists Agenda;
 CREATE TABLE Agenda (
 idAgenda INTEGER PRIMARY KEY,
 horaEntrada INTEGER,
-horaSaida INTEGER
+horaSaida INTEGER,
+CHECK(horaEntrada < horaSaida)
 );
 
 
@@ -116,9 +117,20 @@ idProcesso INTEGER PRIMARY KEY,
 tipoProcesso TEXT,
 horaEntrada INTEGER,
 horaSaida INTEGER,
-nSaude REFERENCES Utente
+nSaude REFERENCES Utente,
+CHECK(horaEntrada < horaSaida)
+);
+
+DROP TABLE if exists ProcessoMedico;
+
+CREATE TABLE ProcessoMedico (
+id REFERENCES Processo,
+idHospital REFERENCES Funcionario ,
+PRIMARY KEY(idProcesso,idHospital)
 /*classe de associacao*/
 );
+
+
 
 COMMIT;
 
