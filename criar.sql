@@ -1,31 +1,41 @@
 PRAGMA foreign_keys = ON;
 BEGIN TRANSACTION; 
 
+/*----------------------------------------------*/
+DROP TABLE if exists Pessoa;
+
+CREATE TABLE Pessoa (
+nCC INTEGER PRIMARY KEY,
+nome CHAR,
+dataNascimento REFERENCES Nascimento,
+morada CHAR,
+telefone INTEGER,
+UNIQUE(telefone)
+);
+
+DROP TABLE if exists Nascimento;
+
+CREATE TABLE Nascimento (
+dataNascimento INTEGER PRIMARY KEY,
+idade INTEGER
+);
+
+
 DROP TABLE if exists Utente;
 
 CREATE TABLE Utente (
-nCC INTEGER ,
-nome CHAR,
-dataNascimento TEXT,
-morada CHAR,
-telefone INTEGER ,
-nSaude INT PRIMARY KEY,
-UNIQUE(nCC,telefone)
-/*/vagas*/
+nCC INTEGER REFERENCES Pessoa,
+nSaude INT PRIMARY KEY
 );
 
 DROP TABLE if exists Funcionario;
 
 CREATE TABLE Funcionario (
-nCC INTEGER,
-nome CHAR,
-dataNascimento TEXT,
-morada CHAR,
-telefone INTEGER ,
-idHospital INT PRIMARY KEY,
-UNIQUE(nCC,telefone)
-/*/vagas*/
+nCC INTEGER REFERENCES Pessoa,
+idHospital INTEGER PRIMARY KEY
 );
+
+/*----------------------------------------------*/
 
 DROP TABLE if exists Medico;
 
@@ -42,6 +52,15 @@ especialidade CHAR,
 idHospital REFERENCES Funcionario PRIMARY KEY
 );
 
+DROP TABLE if exists Trabalha;
+
+CREATE TABLE Trabalha (
+idLocalizacao REFERENCES Departamento,
+idHospital REFERENCES Funcionario,
+PRIMARY KEY(idLocalizacao,idHospital)
+);
+
+/*----------------------------------------------*/
 
 DROP TABLE if exists Data;
 
@@ -62,10 +81,11 @@ horaSaida INTEGER,
 CHECK(horaEntrada < horaSaida)
 );
 
+/*----------------------------------------------*/
 
-DROP TABLE if exists UtenteAlergia;
+DROP TABLE if exists GrauIntolerancia;
 
-CREATE TABLE UtenteAlergia (
+CREATE TABLE GrauIntolerancia (
 nSaude REFERENCES Utente,
 substancia REFERENCES Alergia,
 /*classe de associaçao*/
@@ -80,6 +100,7 @@ substancia TEXT PRIMARY KEY,
 descricao TEXT
 );
 
+/*----------------------------------------------*/
 
 DROP TABLE if exists Departamento;
 
@@ -91,22 +112,14 @@ nome TEXT
 );
 
 
-DROP TABLE if exists Trabalha;
+DROP TABLE if exists EncarregueEnf;
 
-CREATE TABLE Trabalha (
-idLocalizacao REFERENCES Departamento,
-idHospital REFERENCES Funcionario,
-PRIMARY KEY(idLocalizacao,idHospital)
-);
-
-
-DROP TABLE if exists ProcessoEnfermeiro;
-
-CREATE TABLE ProcessoEnfermeiro (
+CREATE TABLE EncarregueEnf (
 idProcesso REFERENCES Processo,
 idHospital REFERENCES Funcionario,
+horaEntrada TEXT,
+horaSaida TEXT,
 PRIMARY KEY(idProcesso,idHospital)
-/*classe de associacao*/
 );
 
 
@@ -121,14 +134,69 @@ nSaude REFERENCES Utente,
 CHECK(horaEntrada < horaSaida)
 );
 
-DROP TABLE if exists ProcessoMedico;
+DROP TABLE if exists EncarregueMed;
 
-CREATE TABLE ProcessoMedico (
-id REFERENCES Processo,
+CREATE TABLE EncarregueMed (
+idProcesso REFERENCES Processo,
 idHospital REFERENCES Funcionario ,
+horaEntrada TEXT,
+horaSaida TEXT,
 PRIMARY KEY(idProcesso,idHospital)
-/*classe de associacao*/
 );
+
+DROP TABLE if exists ProcessoDepartamento;
+
+CREATE TABLE ProcessoDepartamento (
+idProcesso REFERENCES Processo ,
+idHospital REFERENCES Funcionario,
+PRIMARY KEY(idProcesso,idHospital)
+);
+
+/*---------------------------------------------*/
+DROP TABLE if exists Tratamento;
+
+CREATE TABLE Tratamento (
+idTratamento INTEGER PRIMARY KEY,
+descricao TEXT,
+duracao TEXT
+);
+
+DROP TABLE if exists Resulta;
+
+CREATE TABLE Resulta (
+idTratamento REFERENCES Tratamento,
+idProcesso REFERENCES Processo,
+PRIMARY KEY(idTratamento, idProcesso)
+);
+
+DROP TABLE if exists Medicamento;
+
+CREATE TABLE Medicamento (
+idMedicamento INTEGER PRIMARY KEY,
+nome TEXT,
+laboratorio TEXT,
+substancia REFERENCES Farmaco
+);
+
+
+DROP TABLE if exists Farmaco;
+
+CREATE TABLE Farmaco (
+nome TEXT PRIMARY KEY,
+classificacao TEXT
+);
+
+
+DROP TABLE if exists Prescricao;
+
+CREATE TABLE Prescricao (
+idMedicamento REFERENCES Medicamento,
+idProcesso REFERENCES Processo,
+dosagem TEXT,
+modoTome TEXT,
+PRIMARY KEY(idMedicamento,idProcesso)
+);
+
 
 
 
