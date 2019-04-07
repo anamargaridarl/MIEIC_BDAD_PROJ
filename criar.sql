@@ -9,15 +9,15 @@ nCC INTEGER PRIMARY KEY,
 nome CHAR,
 dataNascimento REFERENCES Nascimento,
 morada CHAR,
-telefone INTEGER,
-UNIQUE(telefone)
+telefone INTEGER UNIQUE
 );
 
 DROP TABLE if exists Nascimento;
 
 CREATE TABLE Nascimento (
 dataNascimento INTEGER PRIMARY KEY,
-idade INTEGER
+idade INTEGER CHECK (idade > 0)
+
 );
 
 
@@ -88,7 +88,7 @@ DROP TABLE if exists GrauIntolerancia;
 CREATE TABLE GrauIntolerancia (
 nSaude REFERENCES Utente,
 substancia REFERENCES Alergia,
-/*classe de associaçao*/
+nivel INTEGER CHECK(nivel > 0),
 PRIMARY KEY(nSaude,substancia)
 );
 
@@ -105,10 +105,9 @@ descricao TEXT
 DROP TABLE if exists Departamento;
 
 CREATE TABLE Departamento (
-idLocalizacao TEXT PRIMARY KEY,
-capacidade INTEGER,
+idDepartamento TEXT PRIMARY KEY,
+capacidade INTEGER CHECK (capacidade >= 0), 
 nome TEXT
-/*/vagas*/
 );
 
 
@@ -119,7 +118,8 @@ idProcesso REFERENCES Processo,
 idHospital REFERENCES Funcionario,
 horaEntrada TEXT,
 horaSaida TEXT,
-PRIMARY KEY(idProcesso,idHospital)
+PRIMARY KEY(idProcesso,idHospital),
+CHECK(horaEntrada < horaSaida)
 );
 
 
@@ -158,7 +158,7 @@ DROP TABLE if exists Tratamento;
 CREATE TABLE Tratamento (
 idTratamento INTEGER PRIMARY KEY,
 descricao TEXT,
-duracao TEXT
+duracao TEXT CHECK(duracao >0)
 );
 
 DROP TABLE if exists Resulta;
@@ -173,7 +173,7 @@ DROP TABLE if exists Medicamento;
 
 CREATE TABLE Medicamento (
 idMedicamento INTEGER PRIMARY KEY,
-nome TEXT,
+nome TEXT UNIQUE,
 laboratorio TEXT,
 substancia REFERENCES Farmaco
 );
@@ -192,7 +192,7 @@ DROP TABLE if exists Prescricao;
 CREATE TABLE Prescricao (
 idMedicamento REFERENCES Medicamento,
 idProcesso REFERENCES Processo,
-dosagem TEXT,
+dosagem TEXT ,
 modoTome TEXT,
 PRIMARY KEY(idMedicamento,idProcesso)
 );
