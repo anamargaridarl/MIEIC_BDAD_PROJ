@@ -23,7 +23,7 @@ insert into Medico values('Paediatrics', 1);
 insert into Funcionario values(1234567, 2);
 insert into Enfermeiro values('Triage', 2);
 
-insert into Processo values(1, 'Routine Appointment', strftime('%s', '16:15:00'), strftime('%s', '16:30:00'), 6665645547);
+insert into Processo values(1, 'Routine Appointment', '16:15:00', '16:30:00', 6665645547);
 
 insert into EncarregueMed values(1, 1, '16:15:00', '16:30:00');
 
