@@ -1,5 +1,9 @@
+-- remove this block before sending
 .mode columns
 .headers on
+-- this block ^
+
+PRAGMA foreign_keys = ON;
 
 insert into Nascimento(dataNascimento) values('1986-02-21');
 insert into Nascimento(dataNascimento) values('1991-03-19');
@@ -27,7 +31,7 @@ insert into Processo values(1, 'Routine Appointment', '16:15:00', '16:30:00', 66
 
 insert into EncarregueMed values(1, 1, '16:15:00', '16:30:00');
 
--- debug
+-- debug, remove before sending
 select * from Nascimento;
 select * from Pessoa;
 select * from Utente;
