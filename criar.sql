@@ -24,15 +24,15 @@ idade INTEGER CHECK (idade > 0)
 DROP TABLE if exists Utente;
 
 CREATE TABLE Utente (
-nCC INTEGER REFERENCES Pessoa,
+nCC INTEGER REFERENCES Pessoa ON DELETE CASCADE ON UPDATE CASCADE,
 nSaude INT PRIMARY KEY
 );
 
 DROP TABLE if exists Funcionario;
 
 CREATE TABLE Funcionario (
-nCC INTEGER REFERENCES Pessoa,
-idHospital INTEGER PRIMARY KEY
+nCC INTEGER REFERENCES Pessoa ON DELETE CASCADE ON UPDATE CASCADE,
+idHospital INTEGER PRIMARY KEY 
 );
 
 /*----------------------------------------------*/
@@ -41,7 +41,7 @@ DROP TABLE if exists Medico;
 
 CREATE TABLE Medico (
 especialidade CHAR,
-idHospital INTEGER REFERENCES Funcionario PRIMARY KEY
+idHospital INTEGER REFERENCES Funcionario PRIMARY KEY ON DELETE CASCADE ON UPDATE CASCADE,
 );
 
 
@@ -49,7 +49,7 @@ DROP TABLE if exists Enfermeiro;
 
 CREATE TABLE Enfermeiro (
 especialidade CHAR,
-idHospital INTEGER REFERENCES Funcionario PRIMARY KEY
+idHospital INTEGER REFERENCES Funcionario PRIMARY KEY ON DELETE CASCADE ON UPDATE CASCADE,
 );
 
 DROP TABLE if exists Trabalha;
@@ -57,7 +57,7 @@ DROP TABLE if exists Trabalha;
 CREATE TABLE Trabalha (
 idLocalizacao INTEGER REFERENCES Departamento,
 idHospital INTEGER REFERENCES Funcionario,
-PRIMARY KEY(idLocalizacao,idHospital)
+CONSTRAINT trabalho PRIMARY KEY(idLocalizacao,idHospital)
 );
 
 /*----------------------------------------------*/
