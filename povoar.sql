@@ -1,18 +1,18 @@
 .mode columns
 .headers on
 
-insert into Nascimento(dataNascimento) values(strftime('%s', '1986-02-21'));
-insert into Nascimento(dataNascimento) values(strftime('%s', '1991-03-19'));
-insert into Nascimento(dataNascimento) values(strftime('%s', '2015-04-21'));
-insert into Nascimento(dataNascimento) values(strftime('%s', '2001-11-21'));
+insert into Nascimento(dataNascimento) values('1986-02-21');
+insert into Nascimento(dataNascimento) values('1991-03-19');
+insert into Nascimento(dataNascimento) values('2015-04-21');
+insert into Nascimento(dataNascimento) values('2001-11-21');
 
-insert into Pessoa values(1234567, 'John John', strftime('%s', '1986-02-21'), 'John Street, 1092, Johnstown', 321654);
-insert into Pessoa values(0982123, 'Mary May', strftime('%s', '1991-03-19'), 'May Road, 123, Maryland', 1109291);
-insert into Pessoa values(223564, 'Martha Jones', strftime('%s', '2015-04-21'), 'Unicorn Avenue, 1564, Marthas Vineyard' , 1145290);
-insert into Pessoa values(666546877, 'Steve May', strftime('%s', '2001-11-21'), 'May Road, 123, Maryland', 21564852);
+insert into Pessoa values(1234567, 'John John', '1986-02-21', 'John Street, 1092, Johnstown', 321654);
+insert into Pessoa values(0982123, 'Mary May', '1991-03-19', 'May Road, 123, Maryland', 1109291);
+insert into Pessoa values(223564, 'Martha Jones', '2015-04-21', 'Unicorn Avenue, 1564, Marthas Vineyard' , 1145290);
+insert into Pessoa values(666546877, 'Steve May', '2001-11-21', 'May Road, 123, Maryland', 21564852);
 
 update Nascimento 
-    set idade = (strftime('%Y', 'now') - strftime('%Y', datetime(dataNascimento, 'unixepoch', 'localtime'))) - (strftime('%m-%d', 'now') < strftime('%m-%d', datetime(dataNascimento, 'unixepoch', 'localtime')));
+    set idade = (strftime('%Y', 'now') - strftime('%Y', dataNascimento)) - (strftime('%m-%d', 'now') < strftime('%m-%d', dataNascimento));
 
 insert into Utente values(223564, 12215445);
 insert into Utente values(666546877, 6665645547);

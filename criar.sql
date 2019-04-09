@@ -7,7 +7,7 @@ DROP TABLE if exists Pessoa;
 CREATE TABLE Pessoa (
 nCC INTEGER PRIMARY KEY,
 nome CHAR,
-dataNascimento REFERENCES Nascimento,
+dataNascimento TEXT REFERENCES Nascimento,
 morada CHAR,
 telefone INTEGER UNIQUE
 );
@@ -15,7 +15,7 @@ telefone INTEGER UNIQUE
 DROP TABLE if exists Nascimento;
 
 CREATE TABLE Nascimento (
-dataNascimento INTEGER PRIMARY KEY,
+dataNascimento TEXT PRIMARY KEY,
 idade INTEGER CHECK (idade > 0)
 
 );
@@ -41,7 +41,7 @@ DROP TABLE if exists Medico;
 
 CREATE TABLE Medico (
 especialidade CHAR,
-idHospital REFERENCES Funcionario PRIMARY KEY
+idHospital INTEGER REFERENCES Funcionario PRIMARY KEY
 );
 
 
@@ -49,14 +49,14 @@ DROP TABLE if exists Enfermeiro;
 
 CREATE TABLE Enfermeiro (
 especialidade CHAR,
-idHospital REFERENCES Funcionario PRIMARY KEY
+idHospital INTEGER REFERENCES Funcionario PRIMARY KEY
 );
 
 DROP TABLE if exists Trabalha;
 
 CREATE TABLE Trabalha (
-idLocalizacao REFERENCES Departamento,
-idHospital REFERENCES Funcionario,
+idLocalizacao INTEGER REFERENCES Departamento,
+idHospital INTEGER REFERENCES Funcionario,
 PRIMARY KEY(idLocalizacao,idHospital)
 );
 
@@ -65,9 +65,9 @@ PRIMARY KEY(idLocalizacao,idHospital)
 DROP TABLE if exists Data;
 
 CREATE TABLE Data (
-idHospital REFERENCES Funcionario ON DELETE CASCADE ON UPDATE CASCADE,
+idHospital INTEGER REFERENCES Funcionario ON DELETE CASCADE ON UPDATE CASCADE,
 data TEXT,
-idAgenda REFERENCES Agenda ON DELETE SET NULL ON UPDATE CASCADE,
+idAgenda INTEGER REFERENCES Agenda ON DELETE SET NULL ON UPDATE CASCADE,
 PRIMARY KEY(idHospital,data)
 );
 
@@ -76,8 +76,8 @@ DROP TABLE if exists Agenda;
 
 CREATE TABLE Agenda (
 idAgenda INTEGER PRIMARY KEY,
-horaEntrada INTEGER,
-horaSaida INTEGER,
+horaEntrada TEXT,
+horaSaida TEXT,
 CHECK(horaEntrada < horaSaida)
 );
 
@@ -86,10 +86,10 @@ CHECK(horaEntrada < horaSaida)
 DROP TABLE if exists GrauIntolerancia;
 
 CREATE TABLE GrauIntolerancia (
-nSaude REFERENCES Utente,
-substancia REFERENCES Alergia,
+nSaude INTEGER REFERENCES Utente,
+substancia INTEGER REFERENCES Alergia,
 nivel INTEGER CHECK(nivel > 0),
-PRIMARY KEY(nSaude,substancia)
+PRIMARY KEY(nSaude, substancia)
 );
 
 
@@ -114,8 +114,8 @@ nome TEXT
 DROP TABLE if exists EncarregueEnf;
 
 CREATE TABLE EncarregueEnf (
-idProcesso REFERENCES Processo,
-idHospital REFERENCES Funcionario,
+idProcesso INTEGER REFERENCES Processo,
+idHospital INTEGER REFERENCES Funcionario,
 horaEntrada TEXT,
 horaSaida TEXT,
 PRIMARY KEY(idProcesso,idHospital),
@@ -130,15 +130,15 @@ idProcesso INTEGER PRIMARY KEY,
 tipoProcesso TEXT,
 horaEntrada INTEGER,
 horaSaida INTEGER,
-nSaude REFERENCES Utente,
+nSaude INTEGER REFERENCES Utente,
 CHECK(horaEntrada < horaSaida)
 );
 
 DROP TABLE if exists EncarregueMed;
 
 CREATE TABLE EncarregueMed (
-idProcesso REFERENCES Processo,
-idHospital REFERENCES Funcionario ,
+idProcesso INTEGER REFERENCES Processo,
+idHospital INTEGER REFERENCES Funcionario ,
 horaEntrada TEXT,
 horaSaida TEXT,
 PRIMARY KEY(idProcesso,idHospital)
@@ -147,8 +147,8 @@ PRIMARY KEY(idProcesso,idHospital)
 DROP TABLE if exists ProcessoDepartamento;
 
 CREATE TABLE ProcessoDepartamento (
-idProcesso REFERENCES Processo ,
-idHospital REFERENCES Funcionario,
+idProcesso INTEGER REFERENCES Processo,
+idHospital INTEGER REFERENCES Funcionario,
 PRIMARY KEY(idProcesso,idHospital)
 );
 
@@ -164,8 +164,8 @@ duracao TEXT CHECK(duracao >0)
 DROP TABLE if exists Resulta;
 
 CREATE TABLE Resulta (
-idTratamento REFERENCES Tratamento,
-idProcesso REFERENCES Processo,
+idTratamento INTEGER REFERENCES Tratamento,
+idProcesso INTEGER REFERENCES Processo,
 PRIMARY KEY(idTratamento, idProcesso)
 );
 
@@ -175,7 +175,7 @@ CREATE TABLE Medicamento (
 idMedicamento INTEGER PRIMARY KEY,
 nome TEXT UNIQUE,
 laboratorio TEXT,
-substancia REFERENCES Farmaco
+substancia TEXT REFERENCES Farmaco
 );
 
 
@@ -190,8 +190,8 @@ classificacao TEXT
 DROP TABLE if exists Prescricao;
 
 CREATE TABLE Prescricao (
-idMedicamento REFERENCES Medicamento,
-idProcesso REFERENCES Processo,
+idMedicamento INTEGER REFERENCES Medicamento,
+idProcesso INTEGER REFERENCES Processo,
 dosagem TEXT ,
 modoTome TEXT,
 PRIMARY KEY(idMedicamento,idProcesso)
