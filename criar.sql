@@ -24,7 +24,7 @@ DROP TABLE if exists Utente;
 
 CREATE TABLE Utente (
 nCC INTEGER REFERENCES Pessoa ON DELETE CASCADE ON UPDATE CASCADE,
-nSaude INT PRIMARY KEY
+nSaude INTEGER PRIMARY KEY
 );
 
 DROP TABLE if exists Funcionario;
@@ -88,7 +88,7 @@ DROP TABLE if exists GrauIntolerancia;
 CREATE TABLE GrauIntolerancia (
 nSaude INTEGER REFERENCES Utente ON DELETE CASCADE ON UPDATE CASCADE,
 substancia INTEGER REFERENCES Alergia ON DELETE CASCADE ON UPDATE CASCADE,
-nivel INTEGER CHECK(nivel > 0 && nivel < 5),
+nivel INTEGER CHECK(nivel > 0 AND nivel < 5),
 PRIMARY KEY(nSaude, substancia)
 );
 
