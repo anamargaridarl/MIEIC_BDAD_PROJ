@@ -15,7 +15,7 @@ DROP TABLE if exists Nascimento;
 
 CREATE TABLE Nascimento (
 dataNascimento TEXT PRIMARY KEY,
-idade INTEGER CHECK (idade > 0)
+idade INTEGER CHECK (idade >= 0)
 
 );
 
@@ -55,9 +55,9 @@ idHospital INTEGER PRIMARY KEY REFERENCES Funcionario /*ON DELETE SET Funcionari
 DROP TABLE if exists Trabalha;
 
 CREATE TABLE Trabalha (
-idLocalizacao INTEGER REFERENCES Departamento ON DELETE CASCADE ON UPDATE CASCADE,
+idDepartamento INTEGER REFERENCES Departamento ON DELETE CASCADE ON UPDATE CASCADE,
 idHospital INTEGER REFERENCES Funcionario ON DELETE CASCADE ON UPDATE CASCADE, /*?*/
-CONSTRAINT trabalho PRIMARY KEY(idLocalizacao,idHospital)
+CONSTRAINT trabalho PRIMARY KEY(idDepartamento,idHospital)
 );
 
 /*----------------------------------------------*/
@@ -88,7 +88,7 @@ DROP TABLE if exists GrauIntolerancia;
 CREATE TABLE GrauIntolerancia (
 nSaude INTEGER REFERENCES Utente ON DELETE CASCADE ON UPDATE CASCADE,
 substancia INTEGER REFERENCES Alergia ON DELETE CASCADE ON UPDATE CASCADE,
-nivel INTEGER CHECK(nivel > 0),
+nivel INTEGER CHECK(nivel > 0 && nivel < 5),
 PRIMARY KEY(nSaude, substancia)
 );
 
@@ -115,7 +115,7 @@ DROP TABLE if exists EncarregueEnf;
 
 CREATE TABLE EncarregueEnf (
 idProcesso INTEGER REFERENCES Processo ON DELETE CASCADE ON UPDATE CASCADE,
-idHospital INTEGER REFERENCES Funcionario ON DELETE CASCADE ON UPDATE CASCADE, /*?*/
+idHospital INTEGER REFERENCES Enfermeiro ON DELETE CASCADE ON UPDATE CASCADE, /*?*/
 dataEntrada TEXT NOT NULL,
 dataSaida TEXT ,
 PRIMARY KEY(idProcesso,idHospital),
@@ -138,9 +138,9 @@ DROP TABLE if exists EncarregueMed;
 
 CREATE TABLE EncarregueMed (
 idProcesso INTEGER REFERENCES Processo ON DELETE CASCADE ON UPDATE CASCADE,
-idHospital INTEGER REFERENCES Funcionario ON DELETE CASCADE ON UPDATE CASCADE, /*?*/
-horaEntrada TEXT NOT NULL,
-horaSaida TEXT,
+idHospital INTEGER REFERENCES Medico ON DELETE CASCADE ON UPDATE CASCADE, /*?*/
+dataEntrada TEXT NOT NULL,
+dataSaida TEXT,
 PRIMARY KEY(idProcesso,idHospital)
 );
 
