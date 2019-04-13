@@ -11,6 +11,7 @@ insert into Nascimento(dataNascimento) values('1976-01-11');
 insert into Nascimento(dataNascimento) values('1985-06-05');
 insert into Nascimento(dataNascimento) values('1986-02-21');
 insert into Nascimento(dataNascimento) values('1987-02-05');
+insert into Nascimento(dataNascimento) values('1990-12-24');
 insert into Nascimento(dataNascimento) values('1991-03-19');
 insert into Nascimento(dataNascimento) values('1994-12-21');
 insert into Nascimento(dataNascimento) values('2001-11-21');
@@ -34,14 +35,18 @@ insert into Utente(nCC) values(348740);
 insert into Pessoa values(188472, 'Jacob Ruiz', '1987-02-05', '1 Infinite Loop, Cupertino', 123123);
 insert into Pessoa values(321017, 'Lola Lol', '1986-02-21', '123 Dean Road, San Jose', 456456);
 insert into Pessoa values(268430, 'Charles Smith', '1958-10-06', '1337 The Glade, Marina, San Francisco', 789789);
+insert into Pessoa values(706332, 'Pamela Jones', '1990-12-24', '2412 Christmas Lane, North Pole, San Jose', 987987);
+
 
 insert into Funcionario(nCC) values(188472);
 insert into Funcionario(nCC) values(321017);
 insert into Funcionario(nCC) values(268430);
+insert into Funcionario(nCC) values(706332);
 
-insert into Medico(especialidade) values('Paediatrics');
-insert into Medico(especialidade) values('Cardiology');
-insert into Medico(especialidade) values('Stomatology');
+insert into Medico(especialidade) values('Pediatria');
+insert into Medico(especialidade) values('Cardiologia');
+insert into Medico(especialidade) values('Estomatologia');
+insert into Medico(especialidade) values('Estomatologia');
 
 -- -- Enfermeiros
 insert into Pessoa values(180754, 'Bridget Blair', '1994-12-21', '222 Station Road, Pensacola', 987987);
@@ -52,9 +57,9 @@ insert into Funcionario(nCC) values(180754);
 insert into Funcionario(nCC) values(205691);
 insert into Funcionario(nCC) values(186694);
 
-insert into Enfermeiro(especialidade, idHospital) select 'Vaccinations', MAX(idHospital) - (select COUNT(*) from Medico) + 1 from Funcionario;
-insert into Enfermeiro(especialidade) values('General helping');
-insert into Enfermeiro(especialidade) values('Vitals keeping');
+insert into Enfermeiro(especialidade, idHospital) select 'Vacinacao', MAX(idHospital) - (select COUNT(*) from Medico) + 1 from Funcionario;
+insert into Enfermeiro(especialidade) values('Triagem');
+insert into Enfermeiro(especialidade) values('Verificar valores vitais');
 
 -- Database age calculation
 update Nascimento 
@@ -142,10 +147,18 @@ insert into Medicamento values(5,'UL-250','MERCK', 'Saccharomyces boulardii');
 -- Departamentos
 insert into Departamento values(1, 150, "Medicina Geral");
 insert into Departamento values(2, 50, "Pediatria");
-insert into Departamento values(3, 40, "Radiologia");
+insert into Departamento values(3, 40, "Cardiologia");
 insert into Departamento values(4, 20, "Medicina Nuclear");
-insert into Departamento values(5, 20, "Nutricao");
+insert into Departamento values(5, 20, "Estomatologia");
 
+-- Trabalha
+insert into Trabalha values(2,1);
+insert into Trabalha values(3,2);
+insert into Trabalha values(5,3);
+insert into Trabalha values(5,4);
+insert into Trabalha values(1,5);
+insert into Trabalha values(4,6);
+insert into Trabalha values(4,7);
 
 
 -- debug, remove before sending
@@ -162,7 +175,7 @@ select * from Agenda;
 select * from Medicamento;
 select * from Farmaco;
 select * from Departamento;
-
+select * from Trabalha;
 
 
 

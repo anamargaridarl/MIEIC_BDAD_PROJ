@@ -108,6 +108,14 @@ PRIMARY KEY(idProcesso,idHospital),
 CHECK(dataEntrada < dataSaida)
 );
 
+CREATE TABLE EncarregueMed (
+idProcesso INTEGER REFERENCES Processo ON DELETE CASCADE ON UPDATE CASCADE,
+idHospital INTEGER REFERENCES Medico ON DELETE CASCADE ON UPDATE CASCADE, /*?*/
+dataEntrada TEXT NOT NULL,
+dataSaida TEXT,
+PRIMARY KEY(idProcesso,idHospital)
+);
+
 CREATE TABLE Processo (
 idProcesso INTEGER PRIMARY KEY,
 tipoProcesso TEXT,
@@ -117,13 +125,6 @@ nSaude INTEGER REFERENCES Utente ON DELETE CASCADE ON UPDATE CASCADE,
 CHECK(dataEntrada < dataSaida)
 );
 
-CREATE TABLE EncarregueMed (
-idProcesso INTEGER REFERENCES Processo ON DELETE CASCADE ON UPDATE CASCADE,
-idHospital INTEGER REFERENCES Medico ON DELETE CASCADE ON UPDATE CASCADE, /*?*/
-dataEntrada TEXT NOT NULL,
-dataSaida TEXT,
-PRIMARY KEY(idProcesso,idHospital)
-);
 
 CREATE TABLE ProcessoDepartamento (
 idProcesso INTEGER REFERENCES Processo ON DELETE CASCADE ON UPDATE CASCADE,
