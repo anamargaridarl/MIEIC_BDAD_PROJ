@@ -1,7 +1,15 @@
 BEGIN TRANSACTION; 
 
 /*----------------------------------------------*/
+DROP TABLE if exists Utente;
+DROP TABLE if exists Funcionario;
 DROP TABLE if exists Pessoa;
+DROP TABLE if exists Nascimento;
+
+CREATE TABLE Nascimento (
+dataNascimento TEXT PRIMARY KEY,
+idade INTEGER CHECK (idade >= 0)
+);
 
 CREATE TABLE Pessoa (
 nCC INTEGER PRIMARY KEY,
@@ -11,26 +19,12 @@ morada TEXT,
 telefone INTEGER UNIQUE
 );
 
-DROP TABLE if exists Nascimento;
-
-CREATE TABLE Nascimento (
-dataNascimento TEXT PRIMARY KEY,
-idade INTEGER CHECK (idade >= 0)
-
-);
-
-
-DROP TABLE if exists Utente;
-
 CREATE TABLE Utente (
 nCC INTEGER REFERENCES Pessoa ON DELETE CASCADE ON UPDATE CASCADE,
 nSaude INTEGER PRIMARY KEY
 );
 
-DROP TABLE if exists Funcionario;
-
 CREATE TABLE Funcionario (
---ativo INTEGER,
 idHospital INTEGER PRIMARY KEY,
 nCC INTEGER REFERENCES Pessoa /*como usar on delete e update??*/
 );
@@ -76,9 +70,9 @@ DROP TABLE if exists Agenda;
 
 CREATE TABLE Agenda (
 idAgenda INTEGER PRIMARY KEY,
-dataEntrada TEXT NOT NULL,
-dataSaida TEXT NOT NULL,
-CHECK(dataEntrada < dataSaida)
+horaEntrada TEXT NOT NULL,
+horaSaida TEXT NOT NULL,
+CHECK(horaEntrada < horaSaida)
 );
 
 /*----------------------------------------------*/
