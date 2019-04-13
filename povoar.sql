@@ -61,6 +61,86 @@ insert into Enfermeiro(especialidade) values('Vitals keeping');
 update Nascimento 
     set idade = (strftime('%Y', 'now') - strftime('%Y', dataNascimento)) - (strftime('%m-%d', 'now') < strftime('%m-%d', dataNascimento));
 
+-- -- Alergias
+
+insert into Alergia values('Penicilina','Alergia a subtancia');
+insert into Alergia values('Polen','Sinusite');
+insert into Alergia values('Sol','Dermatite Alergica');
+
+insert into GrauIntolerancia values(1,'Penicilina',5);
+insert into GrauIntolerancia values(2,'Polen',2);
+insert into GrauIntolerancia values(3,'Sol',1);
+
+--Agenda
+
+insert into Agenda(horaEntrada,horaSaida) values('10:00','18:00');
+insert into Agenda(horaEntrada,horaSaida) values('08:00','15:00');
+insert into Agenda(horaEntrada,horaSaida) values('20:00','00:00');
+insert into Agenda(horaEntrada,horaSaida) values('08:30','16:00');
+insert into Agenda(horaEntrada,horaSaida) values('16:00','20:00');
+insert into Agenda(horaEntrada,horaSaida) values('18:00','23:00');
+insert into Agenda(horaEntrada,horaSaida) values('09:00','17:00');
+insert into Agenda(horaEntrada,horaSaida) values('12:00','19:00');
+insert into Agenda(horaEntrada) values('22:00');
+insert into Agenda(horaEntrada) values('23:00');
+
+
+--Data
+
+insert into Data values(1,'2019-04-15',1);
+insert into Data values(1,'2019-04-16',2);
+insert into Data values(1,'2019-04-17',4);
+insert into Data values(1,'2019-04-18',3);
+insert into Data values(1,'2019-04-20',5);
+insert into Data values(1,'2019-04-21',8);
+
+insert into Data values(2,'2019-04-15',4);
+insert into Data values(2,'2019-04-16',4);
+insert into Data values(2,'2019-04-17',4);
+insert into Data values(2,'2019-04-18',4);
+insert into Data values(2,'2019-04-19',4);
+
+insert into Data values(3,'2019-04-15',5);
+insert into Data values(3,'2019-04-16',8);
+insert into Data values(3,'2019-04-17',9);
+insert into Data values(3,'2019-04-18',1);
+insert into Data values(3,'2019-04-20',2);
+
+insert into Data values(4,'2019-04-15',2);
+insert into Data values(4,'2019-04-16',2);
+insert into Data values(4,'2019-04-17',2);
+insert into Data values(4,'2019-04-18',2);
+insert into Data values(4,'2019-04-19',2);
+insert into Data values(4,'2019-04-20',2);
+
+insert into Data values(5,'2019-04-15',5);
+insert into Data values(5,'2019-04-16',6);
+insert into Data values(5,'2019-04-17',6);
+insert into Data values(5,'2019-04-18',5);
+insert into Data values(5,'2019-04-19',3);
+insert into Data values(5,'2019-04-21',3);
+
+insert into Data values(6,'2019-04-15',4);
+insert into Data values(6,'2019-04-16',4);
+insert into Data values(6,'2019-04-17',4);
+insert into Data values(6,'2019-04-18',4);
+insert into Data values(6,'2019-04-19',4);
+insert into Data values(6,'2019-04-20',4);
+
+--Medicamento
+insert into Medicamento values(1,'Ben-U-Ron','bene', 'Paracetamol');
+insert into Medicamento values(2,'Augmentin Duo','GlaxoSmithKline', 'Amoxicilina');
+insert into Medicamento values(3,'Brufen','Abbot', 'Ibuprofeno');
+insert into Medicamento values(4,'Espironolactona','Alter', 'Espironolactona');
+insert into Medicamento values(5,'UL-250','MERCK', 'Saccharomyces boulardii');
+
+
+insert into Farmaco values ('Paracetamol', 'Analgesico');
+insert into Farmaco values ('Amoxicilina', 'Antibiotico');
+insert into Farmaco values ('Ibuprofeno', 'Anti-inflamatorio');
+insert into Farmaco values ('Espironolactona', 'Diuretico');
+insert into Farmaco values ('Saccharomyces boulardii', 'Microbiota Intestinal');
+
 
 
 
@@ -71,3 +151,13 @@ select * from Utente;
 select * from Funcionario;
 select * from Medico;
 select * from Enfermeiro;
+select * from Alergia;
+select * from GrauIntolerancia;
+select * from Data;
+select * from Agenda;
+select * from Medicamento;
+select * from Farmaco;
+
+
+
+

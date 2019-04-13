@@ -75,7 +75,7 @@ PRIMARY KEY(idHospital,data)
 CREATE TABLE Agenda (
 idAgenda INTEGER PRIMARY KEY,
 horaEntrada TEXT NOT NULL,
-horaSaida TEXT NOT NULL,
+horaSaida TEXT, 
 CHECK(horaEntrada < horaSaida)
 );
 
@@ -83,7 +83,7 @@ CHECK(horaEntrada < horaSaida)
 CREATE TABLE GrauIntolerancia (
 nSaude INTEGER REFERENCES Utente ON DELETE CASCADE ON UPDATE CASCADE,
 substancia INTEGER REFERENCES Alergia ON DELETE CASCADE ON UPDATE CASCADE,
-nivel INTEGER CHECK(nivel > 0 AND nivel < 5),
+nivel INTEGER CHECK(nivel > 0 AND nivel <= 5),
 PRIMARY KEY(nSaude, substancia)
 );
 
@@ -153,7 +153,7 @@ UNIQUE(nome , laboratorio)
 );
 
 CREATE TABLE Farmaco (
-nome TEXT PRIMARY KEY,
+substancia TEXT PRIMARY KEY,
 classificacao TEXT
 );
 
