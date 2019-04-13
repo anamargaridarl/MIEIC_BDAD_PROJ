@@ -75,7 +75,7 @@ PRIMARY KEY(idHospital,data)
 CREATE TABLE Agenda (
 idAgenda INTEGER PRIMARY KEY,
 horaEntrada TEXT NOT NULL,
-horaSaida TEXT, 
+horaSaida TEXT NOT NULL, 
 CHECK(horaEntrada < horaSaida)
 );
 
@@ -103,9 +103,9 @@ CREATE TABLE EncarregueEnf (
 idProcesso INTEGER REFERENCES Processo ON DELETE CASCADE ON UPDATE CASCADE,
 idHospital INTEGER REFERENCES Enfermeiro ON DELETE CASCADE ON UPDATE CASCADE, /*?*/
 dataEntrada TEXT NOT NULL,
-dataSaida TEXT ,
+dataSaida TEXT,
 PRIMARY KEY(idProcesso,idHospital),
-CHECK(dataEntrada < dataSaida)
+CHECK(datetime(dataEntrada) < datetime(dataSaida))
 );
 
 CREATE TABLE EncarregueMed (
@@ -113,7 +113,8 @@ idProcesso INTEGER REFERENCES Processo ON DELETE CASCADE ON UPDATE CASCADE,
 idHospital INTEGER REFERENCES Medico ON DELETE CASCADE ON UPDATE CASCADE, /*?*/
 dataEntrada TEXT NOT NULL,
 dataSaida TEXT,
-PRIMARY KEY(idProcesso,idHospital)
+PRIMARY KEY(idProcesso,idHospital),
+CHECK(datetime(dataEntrada) < datetime(dataSaida))
 );
 
 CREATE TABLE Processo (
@@ -122,7 +123,7 @@ tipoProcesso TEXT,
 dataEntrada TEXT DEFAULT CURRENT_TIMESTAMP NOT NULL,
 dataSaida TEXT,
 nSaude INTEGER REFERENCES Utente ON DELETE CASCADE ON UPDATE CASCADE,
-CHECK(dataEntrada < dataSaida)
+CHECK(datetime(dataEntrada) < datetime(dataSaida))
 );
 
 
@@ -150,7 +151,7 @@ idMedicamento INTEGER PRIMARY KEY,
 nome TEXT,
 laboratorio TEXT,
 substancia TEXT REFERENCES Farmaco ON DELETE SET NULL ON UPDATE CASCADE,
-UNIQUE(nome , laboratorio)
+UNIQUE(nome, laboratorio)
 );
 
 CREATE TABLE Farmaco (
