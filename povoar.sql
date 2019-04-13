@@ -35,7 +35,7 @@ insert into Utente(nCC) values(348740);
 insert into Pessoa values(188472, 'Jacob Ruiz', '1987-02-05', '1 Infinite Loop, Cupertino', 123123);
 insert into Pessoa values(321017, 'Lola Lol', '1986-02-21', '123 Dean Road, San Jose', 456456);
 insert into Pessoa values(268430, 'Charles Smith', '1958-10-06', '1337 The Glade, Marina, San Francisco', 789789);
-insert into Pessoa values(706332, 'Pamela Jones', '1990-12-24', '2412 Christmas Lane, North Pole, San Jose', 987987);
+insert into Pessoa values(706332, 'Pamela Jones', '1990-12-24', '2412 Christmas Lane, North Pole, San Jose', 989989);
 
 
 insert into Funcionario(nCC) values(188472);
@@ -57,7 +57,7 @@ insert into Funcionario(nCC) values(180754);
 insert into Funcionario(nCC) values(205691);
 insert into Funcionario(nCC) values(186694);
 
-insert into Enfermeiro(especialidade, idHospital) select 'Vacinacao', MAX(idHospital) - (select COUNT(*) from Medico) + 1 from Funcionario;
+insert into Enfermeiro values('Vacinacao', 5);
 insert into Enfermeiro(especialidade) values('Triagem');
 insert into Enfermeiro(especialidade) values('Verificar valores vitais');
 
@@ -67,9 +67,9 @@ update Nascimento
 
 
 -- Alergias
-insert into Alergia values('Penicilina','Alergia a subtancia');
+insert into Alergia values('Penicilina','Alergia a substancia');
 insert into Alergia values('Polen','Sinusite');
-insert into Alergia values('Sol','Dermatite Alergica');
+insert into Alergia values('Sol','Dermatite alergica');
 
 insert into GrauIntolerancia values(1,'Penicilina',5);
 insert into GrauIntolerancia values(2,'Polen',2);
@@ -78,7 +78,7 @@ insert into GrauIntolerancia values(3,'Sol',1);
 -- Agenda
 insert into Agenda(horaEntrada,horaSaida) values('10:00','18:00');
 insert into Agenda(horaEntrada,horaSaida) values('08:00','15:00');
-insert into Agenda(horaEntrada,horaSaida) values('20:00','00:00');
+insert into Agenda(horaEntrada,horaSaida) values('20:00','00:00'); -- o check falha porque 00:00 vem antes de 20:00
 insert into Agenda(horaEntrada,horaSaida) values('08:30','16:00');
 insert into Agenda(horaEntrada,horaSaida) values('16:00','20:00');
 insert into Agenda(horaEntrada,horaSaida) values('18:00','23:00');
@@ -158,7 +158,7 @@ insert into Trabalha values(5,3);
 insert into Trabalha values(5,4);
 insert into Trabalha values(1,5);
 insert into Trabalha values(4,6);
-insert into Trabalha values(4,7);
+insert into Trabalha values(2,7);
 
 
 -- debug, remove before sending
