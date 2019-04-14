@@ -56,6 +56,7 @@ idHospital INTEGER PRIMARY KEY REFERENCES Funcionario
 CREATE TABLE Enfermeiro (
 especialidade TEXT ,
 idHospital INTEGER PRIMARY KEY REFERENCES Funcionario 
+);
 
 CREATE TABLE Trabalha (
 idDepartamento INTEGER REFERENCES Departamento ON DELETE CASCADE ON UPDATE CASCADE,
