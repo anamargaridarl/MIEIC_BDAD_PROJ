@@ -44,29 +44,28 @@ nSaude INTEGER PRIMARY KEY
 
 CREATE TABLE Funcionario (
 idHospital INTEGER PRIMARY KEY,
-nCC INTEGER REFERENCES Pessoa /*como usar on delete e update??*/
+nCC INTEGER REFERENCES Pessoa 
 );
 
 /*----------------------------------------------*/
 CREATE TABLE Medico (
 especialidade TEXT NOT NULL,
-idHospital INTEGER PRIMARY KEY REFERENCES Funcionario /*ON DELETE SET Funcionario.ativo 0 ON UPDATE CASCADE  como usar on delete e update??*/
+idHospital INTEGER PRIMARY KEY REFERENCES Funcionario 
 );
 
 CREATE TABLE Enfermeiro (
 especialidade TEXT ,
-idHospital INTEGER PRIMARY KEY REFERENCES Funcionario /*ON DELETE SET Funcionario.ativo = 0 ON UPDATE CASCADE  como usar on delete e update??*/
-);
+idHospital INTEGER PRIMARY KEY REFERENCES Funcionario 
 
 CREATE TABLE Trabalha (
 idDepartamento INTEGER REFERENCES Departamento ON DELETE CASCADE ON UPDATE CASCADE,
-idHospital INTEGER REFERENCES Funcionario ON DELETE CASCADE ON UPDATE CASCADE, /*?*/
+idHospital INTEGER REFERENCES Funcionario ON DELETE CASCADE ON UPDATE CASCADE, 
 CONSTRAINT trabalho PRIMARY KEY(idDepartamento,idHospital)
 );
 
 /*----------------------------------------------*/
 CREATE TABLE Data (
-idHospital INTEGER REFERENCES Funcionario ON DELETE CASCADE ON UPDATE CASCADE, /*?*/
+idHospital INTEGER REFERENCES Funcionario ON DELETE CASCADE ON UPDATE CASCADE, 
 data TEXT,
 idAgenda INTEGER REFERENCES Agenda ON DELETE SET NULL ON UPDATE CASCADE, 
 PRIMARY KEY(idHospital,data)
@@ -100,7 +99,7 @@ nome TEXT NOT NULL
 
 CREATE TABLE EncarregueEnf (
 idProcesso INTEGER REFERENCES Processo ON DELETE CASCADE ON UPDATE CASCADE,
-idHospital INTEGER REFERENCES Enfermeiro ON DELETE CASCADE ON UPDATE CASCADE, /*?*/
+idHospital INTEGER REFERENCES Enfermeiro ON DELETE CASCADE ON UPDATE CASCADE, 
 dataEntrada TEXT NOT NULL,
 dataSaida TEXT,
 PRIMARY KEY(idProcesso,idHospital),
@@ -109,7 +108,7 @@ CHECK(datetime(dataEntrada) < datetime(dataSaida))
 
 CREATE TABLE EncarregueMed (
 idProcesso INTEGER REFERENCES Processo ON DELETE CASCADE ON UPDATE CASCADE,
-idHospital INTEGER REFERENCES Medico ON DELETE CASCADE ON UPDATE CASCADE, /*?*/
+idHospital INTEGER REFERENCES Medico ON DELETE CASCADE ON UPDATE CASCADE, 
 dataEntrada TEXT NOT NULL,
 dataSaida TEXT,
 PRIMARY KEY(idProcesso,idHospital),
@@ -159,7 +158,7 @@ classificacao TEXT
 );
 
 CREATE TABLE Prescricao (
-idMedicamento INTEGER REFERENCES Medicamento ON DELETE CASCADE ON UPDATE CASCADE, /* caso medicamento seja eliminado etao prescriçao tmb*/
+idMedicamento INTEGER REFERENCES Medicamento ON DELETE CASCADE ON UPDATE CASCADE, 
 idProcesso INTEGER REFERENCES Processo ON DELETE CASCADE ON UPDATE CASCADE,  
 dosagem TEXT NOT NULL,
 modoToma TEXT,
