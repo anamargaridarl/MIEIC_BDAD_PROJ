@@ -75,7 +75,7 @@ insert into GrauIntolerancia values(120369,'Sol',1);
 -- Agenda
 insert into Agenda(horaEntrada,horaSaida) values('10:00','18:00');
 insert into Agenda(horaEntrada,horaSaida) values('08:00','15:00');
-insert into Agenda(horaEntrada,horaSaida) values('20:00','24:00'); -- o check falha porque 00:00 vem antes de 20:00
+insert into Agenda(horaEntrada,horaSaida) values('20:00','00:00'); -- o check falha porque 00:00 vem antes de 20:00
 insert into Agenda(horaEntrada,horaSaida) values('08:30','16:00');
 insert into Agenda(horaEntrada,horaSaida) values('16:00','20:00');
 insert into Agenda(horaEntrada,horaSaida) values('18:00','23:00');
@@ -86,7 +86,6 @@ insert into Agenda(horaEntrada,horaSaida) values('05:30','12:30');
 
 
 -- Data
-
 insert into Data values(1,'2019-04-15',1);
 insert into Data values(1,'2019-04-16',2);
 insert into Data values(1,'2019-04-17',4);

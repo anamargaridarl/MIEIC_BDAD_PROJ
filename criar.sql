@@ -75,8 +75,7 @@ PRIMARY KEY(idHospital,data)
 CREATE TABLE Agenda (
 idAgenda INTEGER PRIMARY KEY,
 horaEntrada TEXT NOT NULL,
-horaSaida TEXT NOT NULL, 
-CHECK(horaEntrada < horaSaida)
+horaSaida TEXT NOT NULL
 );
 
 /*----------------------------------------------*/
