@@ -4,9 +4,9 @@
 
 --Processo mais longo em cada departamento
 
-SELECT MAX((strftime('%s',dataSaida) - strftime('%s', dataEntrada))/ 3600) AS MAXI, idDepartamento
+SELECT idDepartamento,idProcesso, tipoProcesso, MAX((strftime('%s',dataSaida) - strftime('%s', dataEntrada))/ 60) AS DurationMin
 FROM(
-SELECT dataEntrada,dataSaida, idProcesso, idDepartamento
+SELECT *
 FROM Processo natural join ProcessoDepartamento
 WHERE (dataSaida IS NOT NULL))
 GROUP BY idDepartamento
