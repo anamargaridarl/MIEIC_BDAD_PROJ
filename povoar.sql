@@ -161,10 +161,11 @@ insert into Trabalha values(2,7);
 
 -- Processo
 insert into Processo values(1,'Operacao Cirurgica','2019-01-30 10:30:27','2019-01-31 11:25:43',200852);
-insert into Processo(tipoProcesso, dataEntrada, nSaude) values('Internamento','2019-03-10 08:12:75',120369);
-insert into Processo(tipoProcesso, dataEntrada, dataSaida, nSaude) values('Consulta','2019-04-10 10:30:14','2019-04-10 11:04:73',250168);
+insert into Processo(tipoProcesso, dataEntrada, nSaude) values('Internamento','2019-03-10 08:12:00',120369);
+insert into Processo(tipoProcesso, dataEntrada, dataSaida, nSaude) values('Consulta','2019-04-10 10:30:14','2019-04-10 11:04:00',250168);
+insert into Processo(tipoProcesso, dataEntrada, dataSaida, nSaude) values('Consulta','2019-04-18 10:30:14','2019-04-20 11:04:00',250168);
 insert into Processo(tipoProcesso, dataEntrada, dataSaida, nSaude) values('Urgencia','2019-04-12 09:30:00','2019-04-13 12:15:00',250168);
-insert into Processo(tipoProcesso, dataEntrada, dataSaida, nSaude) values('Vacinacao','2019-04-14 07:35:28','2019-04-14 07:57:64',100137); --Pediatria
+insert into Processo(tipoProcesso, dataEntrada, dataSaida, nSaude) values('Vacinacao','2019-04-14 07:35:28','2019-04-14 07:57:00',100137); --Pediatria
 insert into Processo(tipoProcesso, dataEntrada, nSaude) values('Urgencia','2019-04-14 07:35:28',200852);
 
 --ProcessoDepartamento
