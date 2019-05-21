@@ -217,3 +217,9 @@ insert into Prescricao values(2,1,'1000mg','1 comprimido 2 vezes p/dia apos refe
 insert into Prescricao values(1,1,'1000mg','1 comprimido 3 vezes p/dia em caso de dores');
 insert into Prescricao values(5,3,'250mg','Tomar 30 minutos antes de uma refeiçao');
 insert into Prescricao values(4,4,'50mg','2 comprimidos em jejum');
+insert into Prescricao values(4,2,'50mg','2 comprimidos a seguir ao almoço');
+insert into Prescricao values(5,2,'350mg','5 comprimidos a seguir ao jantar');
+
+
+
+
