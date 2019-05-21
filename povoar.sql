@@ -181,10 +181,10 @@ insert into EncarregueMed values(1,1,'2019-01-30 10:30:27','2019-01-30 16:50:12'
 insert into EncarregueMed values(1,2,'2019-01-31 08:30:00','2019-01-31 11:25:43');
 insert into EncarregueMed values(2,2,'2019-03-10 08:12:75','2019-03-10 14:30:00');
 insert into EncarregueMed(idProcesso,idHospital,dataEntrada) values(2,3,'2019-03-10 14:30:00');
-insert into EncarregueMed values(3,4,'2019-04-10 10:30:14','2019-04-10 11:04:73');
+insert into EncarregueMed values(3,4,'2019-04-10 10:30:14','2019-04-10 11:04:53');
 insert into EncarregueMed values(4,2,'2019-04-12 09:30:00','2019-04-12 14:15:00');
 insert into EncarregueMed values(4,4,'2019-04-13 08:00:00','2019-04-13 12:15:00');
-insert into EncarregueMed values(5,1,'2019-04-14 07:35:28','2019-04-14 07:57:64');
+insert into EncarregueMed values(5,1,'2019-04-14 07:35:28','2019-04-14 07:57:44');
 insert into EncarregueMed(idProcesso,idHospital,dataEntrada) values(6,1,'2019-04-14 07:35:28');
 
 --EncarregueEnf
@@ -193,10 +193,10 @@ insert into EncarregueEnf values(1,7,'2019-01-30 16:50:12','2019-01-30 24:00:00'
 insert into EncarregueEnf values(1,5,'2019-01-31 00:00:00','2019-01-31 11:25:43');
 insert into EncarregueEnf values(2,6,'2019-03-10 08:12:75','2019-03-10 14:30:00');
 insert into EncarregueEnf values(2,7,'2019-03-10 14:30:00','2019-03-10 22:30:00');
-insert into EncarregueEnf values(3,7,'2019-04-10 10:30:14','2019-04-10 11:04:73');
+insert into EncarregueEnf values(3,7,'2019-04-10 10:30:14','2019-04-10 11:04:53');
 insert into EncarregueEnf values(4,6,'2019-04-12 09:30:00','2019-04-12 17:15:00');
 insert into EncarregueEnf values(4,7,'2019-04-12 17:15:00','2019-04-12 24:00:00');
-insert into EncarregueEnf values(5,5,'2019-04-14 07:35:28','2019-04-14 07:57:64');
+insert into EncarregueEnf values(5,5,'2019-04-14 07:35:28','2019-04-14 07:57:44');
 insert into EncarregueEnf(idProcesso,idHospital,dataEntrada) values(6,7,'2019-04-14 07:35:28');
 
 --Tratamento
@@ -217,3 +217,9 @@ insert into Prescricao values(2,1,'1000mg','1 comprimido 2 vezes p/dia apos refe
 insert into Prescricao values(1,1,'1000mg','1 comprimido 3 vezes p/dia em caso de dores');
 insert into Prescricao values(5,3,'250mg','Tomar 30 minutos antes de uma refeiçao');
 insert into Prescricao values(4,4,'50mg','2 comprimidos em jejum');
+insert into Prescricao values(4,2,'50mg','2 comprimidos a seguir ao almoço');
+insert into Prescricao values(5,2,'350mg','5 comprimidos a seguir ao jantar');
+
+
+
+
