@@ -219,7 +219,3 @@ insert into Prescricao values(5,3,'250mg','Tomar 30 minutos antes de uma refeiç
 insert into Prescricao values(4,4,'50mg','2 comprimidos em jejum');
 insert into Prescricao values(4,2,'50mg','2 comprimidos a seguir ao almoço');
 insert into Prescricao values(5,2,'350mg','5 comprimidos a seguir ao jantar');
-
-
-
-
