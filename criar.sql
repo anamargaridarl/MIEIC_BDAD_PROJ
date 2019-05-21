@@ -95,7 +95,8 @@ descricao TEXT
 CREATE TABLE Departamento (
 idDepartamento TEXT PRIMARY KEY,
 capacidade INTEGER NOT NULL CHECK (capacidade >= 0), 
-nome TEXT NOT NULL
+nome TEXT NOT NULL,
+vagas INTEGER CHECK (vagas >= 0)
 );
 
 CREATE TABLE EncarregueEnf (

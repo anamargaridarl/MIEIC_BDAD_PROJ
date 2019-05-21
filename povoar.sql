@@ -142,13 +142,13 @@ insert into Medicamento values(6,'Paracetamol','Generis','Paracetamol');
 insert into Medicamento values(7,'Ib-U-Ron','Bene','Ibuprofeno');
 
 -- Departamentos
-insert into Departamento values(1, 150, "Medicina Geral");
-insert into Departamento values(2, 50, "Pediatria");
-insert into Departamento values(3, 40, "Cardiologia");
-insert into Departamento values(4, 20, "Medicina Nuclear");
-insert into Departamento values(5, 20, "Estomatologia");
-insert into Departamento values(6, 60, 'Cirurgia');
-insert into Departamento values(7, 200, 'Urgencia');
+insert into Departamento values(1, 150, "Medicina Geral", 150);
+insert into Departamento values(2, 50, "Pediatria", 50);
+insert into Departamento values(3, 40, "Cardiologia", 40);
+insert into Departamento values(4, 20, "Medicina Nuclear", 20);
+insert into Departamento values(5, 20, "Estomatologia", 20);
+insert into Departamento values(6, 60, 'Cirurgia', 60);
+insert into Departamento values(7, 200, 'Urgencia', 200);
 
 -- Trabalha
 insert into Trabalha values(2,1);
