@@ -45,6 +45,7 @@ nSaude INTEGER PRIMARY KEY
 CREATE TABLE Funcionario (
 idHospital INTEGER PRIMARY KEY,
 nCC INTEGER REFERENCES Pessoa 
+activo INTEGER DEFAULT 1
 );
 
 /*----------------------------------------------*/
