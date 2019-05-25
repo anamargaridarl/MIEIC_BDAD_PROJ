@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 -- CREATE TRIGGER CheckVagas
 -- AFTER INSERT ON ProcessoDepartamento
 -- FOR EACH ROW

@@ -1,3 +1,4 @@
+PRAGMA foreign_keys = ON;
 
 CREATE TRIGGER RemoveFunc
 INSTEAD OF DELETE ON Funcionario
