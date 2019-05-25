@@ -16,3 +16,17 @@ WHEN(old.activo == 0)
 BEGIN
     SELECT raise(rollback, 'Funcionario ja nao se encontra ativo!');
 END;
+
+CREATE TRIGGER RestraintAddProcEnf
+BEFORE insert ON EncarregueEnf
+    WHEN(idHospital == 0)
+BEGIN
+     SELECT raise(rollback, 'Funcionario ja nao se encontra ativo!');
+END;
+
+CREATE TRIGGER RestraintAddProcMed
+BEFORE INSERT ON EncarregueMed
+    WHEN(idHospital == 0)
+BEGIN
+      SELECT raise(rollback, 'Funcionario ja nao se encontra ativo!');
+END;
