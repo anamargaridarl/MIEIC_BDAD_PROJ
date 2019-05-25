@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 INSERT INTO Departamento values(8, 5, 'Urgencia', 5);
 
 SELECT * FROM Departamento WHERE idDepartamento=8;
