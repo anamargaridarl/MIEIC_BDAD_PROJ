@@ -86,10 +86,12 @@ insert into Agenda(horaEntrada,horaSaida) values('05:30','12:30');
 
 
 -- Data
+insert into Data values(1,'2019-04-14',1);
 insert into Data values(1,'2019-04-15',1);
 insert into Data values(1,'2019-04-16',2);
 insert into Data values(1,'2019-04-17',4);
-insert into Data values(1,'2019-04-18',3);
+insert into Data values(1,'2019-04-18',6);
+insert into Data values(1,'2019-04-19',3);
 insert into Data values(1,'2019-04-20',5);
 insert into Data values(1,'2019-04-21',8);
 
@@ -98,6 +100,7 @@ insert into Data values(2,'2019-04-16',4);
 insert into Data values(2,'2019-04-17',4);
 insert into Data values(2,'2019-04-18',4);
 insert into Data values(2,'2019-04-19',4);
+insert into Data values(2,'2019-04-22',8);
 
 insert into Data values(3,'2019-04-15',5);
 insert into Data values(3,'2019-04-16',8);
@@ -105,12 +108,14 @@ insert into Data values(3,'2019-04-17',9);
 insert into Data values(3,'2019-04-18',1);
 insert into Data values(3,'2019-04-20',2);
 
+insert into Data values(4,'2019-04-14',2);
 insert into Data values(4,'2019-04-15',2);
 insert into Data values(4,'2019-04-16',2);
 insert into Data values(4,'2019-04-17',2);
 insert into Data values(4,'2019-04-18',2);
 insert into Data values(4,'2019-04-19',2);
 insert into Data values(4,'2019-04-20',2);
+insert into Data values(4,'2019-04-22',2);
 
 insert into Data values(5,'2019-04-15',5);
 insert into Data values(5,'2019-04-16',6);
@@ -125,6 +130,7 @@ insert into Data values(6,'2019-04-17',4);
 insert into Data values(6,'2019-04-18',4);
 insert into Data values(6,'2019-04-19',4);
 insert into Data values(6,'2019-04-20',4);
+insert into Data values(6,'2019-04-21',4);
 
 --Medicamento
 insert into Farmaco values ('Paracetamol', 'Analgesico');
