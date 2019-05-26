@@ -19,14 +19,14 @@ END;
 
 CREATE TRIGGER RestraintAddProcEnf
 BEFORE insert ON EncarregueEnf
-    WHEN(idHospital == 0)
+    WHEN exists (select * from (Enfermeiro natural join Funcionario) where (activo = 0 and idHospital = new.idHospital))
 BEGIN
-     SELECT raise(rollback, 'Funcionario ja nao se encontra ativo!');
+      SELECT raise(ignore);
 END;
 
 CREATE TRIGGER RestraintAddProcMed
 BEFORE INSERT ON EncarregueMed
-    WHEN(idHospital == 0)
+     WHEN exists (select * from (Medico natural join Funcionario) where (activo = 0 and idHospital = new.idHospital))
 BEGIN
-      SELECT raise(rollback, 'Funcionario ja nao se encontra ativo!');
+         SELECT raise(ignore);
 END;
