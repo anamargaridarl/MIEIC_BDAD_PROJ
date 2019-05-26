@@ -2,7 +2,7 @@
 .headers on
 .nullvalue NULL
 
--- Quais os médicos disponíveis (i.e. que não se encontram encarregues de nenhum processo) num certo dia e hora?
+-- Quais os médicos disponíveis (i.e. que não se encontram encarregues de nenhum processo) no dia '2019-04-15' a partir das '16:00'?
 
 select Pessoa.*
 from Pessoa, Funcionario, Agenda, 

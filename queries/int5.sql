@@ -2,7 +2,7 @@
 .headers on
 .nullvalue NULL
 
---Nº de processos por funcionario, por ordem decrescente
+--Numero de processos por funcionario, por ordem decrescente
 
 SELECT idHospital, nome, numProc
 FROM (SELECT idHospital, count(idProcesso) AS numProc

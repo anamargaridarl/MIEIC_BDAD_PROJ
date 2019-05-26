@@ -2,7 +2,7 @@
 .headers on
 .nullvalue NULL
 
---  Enfermeiros que trabalharam todos os dias de uma semana
+--  Enfermeiros que trabalharam todos os dias da semana de '2019-04-15' a '2019-04-21'
 CREATE VIEW diasDaSemana AS
 SELECT DISTINCT data
 FROM Data

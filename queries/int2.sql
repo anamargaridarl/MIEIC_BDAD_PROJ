@@ -6,7 +6,4 @@
 
 SELECT nome, nSaude, nCC, descricao, substancia, nivel
 FROM GrauIntolerancia natural join Utente natural join Alergia natural join  (select nome, nCC
-                                                                                 from Pessoa)
-
-
-
+                                                                                 from Pessoa);

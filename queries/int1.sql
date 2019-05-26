@@ -2,7 +2,7 @@
 .headers on
 .nullvalue NULL
 
---Capacidade total de todos os departamentos
+--Capacidade total do hospital
 
 SELECT SUM(capacidade)
 FROM Departamento
