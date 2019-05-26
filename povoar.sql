@@ -124,6 +124,7 @@ insert into Data values(5,'2019-04-18',5);
 insert into Data values(5,'2019-04-19',3);
 insert into Data values(5,'2019-04-21',3);
 
+insert into Data values(6,'2019-04-14',3);
 insert into Data values(6,'2019-04-15',4);
 insert into Data values(6,'2019-04-16',4);
 insert into Data values(6,'2019-04-17',4);
